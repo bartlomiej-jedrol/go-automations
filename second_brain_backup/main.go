@@ -50,6 +50,7 @@ func init() {
 	gdCredsPath = cfg.Services[0].LocalPaths.GoogleDriveCreds
 }
 
+// uploadToGDrive uploads single file to google drive.
 func uploadToGDrive(filePath string) {
 	function := "uploadToGDrive"
 	iLog.Info("starting uploading backup to google drive...", nil, service, function, nil, nil)
@@ -101,6 +102,7 @@ func uploadToGDrive(filePath string) {
 	iLog.Info("finished uploading file to google drive", nil, service, function, nil, nil)
 }
 
+// main executes logic for zipping second_brain vault and uploading the zip to google drive.
 func main() {
 	filePath := iZip.Folder(sbPath, uploadPath, "second_brain_backup")
 	uploadToGDrive(filePath)
